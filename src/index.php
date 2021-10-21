@@ -75,7 +75,9 @@
 
                     }
                 }
-
+                else{
+                    header("Location:error.php");
+                }
                 ?>
 
             </tbody>

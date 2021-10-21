@@ -9,28 +9,69 @@
     <a href="./index.php"><button type="button" class="btn btn-primary"><i class="fas fa-undo-alt"></i> BACK</button></a>
     <br><br>
     <?php
-        if(isset($_GET['id'])){
-            $id = $_GET['id'];
-            $sql="SELECT * FROM tb_drugs WHERE id = '$id'";
-            $res = mysqli_query($conn,$sql);
-            $row = mysqli_fetch_assoc($res);
-            $name = $row['name'];
-            $type = $row['type'];
-            $barcode = $row['barcode'];
-            $dose = $row['dose'];
-            $code = $row['code'];
-            $cost_price = $row['cost_price'];
-            $selling_price = $row['selling_price'];
-            $expiry = $row['expiry'];
-            $company_name = $row['company_name'];
-            $production_date = $row['production_date'];
-            $expiration_date = $row['expiration_date'];
-            $place = $row['place'];
-            $quantity = $row['quantity'];
-            
-        }
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM tb_drugs WHERE id = '$id'";
+        $res = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($res);
+        $name = $row['name'];
+        $type = $row['type'];
+        $barcode = $row['barcode'];
+        $dose = $row['dose'];
+        $code = $row['code'];
+        $cost_price = $row['cost_price'];
+        $selling_price = $row['selling_price'];
+        $expiry = $row['expiry'];
+        $company_name = $row['company_name'];
+        $production_date = $row['production_date'];
+        $expiration_date = $row['expiration_date'];
+        $place = $row['place'];
+        $quantity = $row['quantity'];
+    }
     ?>
+
     <form action="" method="POST" enctype="multipart/form-data">
+        <?php
+        if (isset($_POST['submit'])) {
+            $name = $_POST['name'];
+            $type = $_POST['type'];
+            $barcode = $_POST['barcode'];
+            $dose = $_POST['dose'];
+            $code = $_POST['code'];
+            $cost_price = $_POST['cost_price'];
+            $selling_price = $_POST['selling_price'];
+            $expiry = $_POST['expiry'];
+            $company_name = $_POST['company_name'];
+            $production_date = $_POST['production_date'];
+            $expiration_date = $_POST['expiration_date'];
+            $place = $_POST['place'];
+            $quantity = $_POST['quantity'];
+
+            $sql2 = "UPDATE tb_drugs SET 
+        name = '$name',
+        type = '$type',
+        barcode = '$barcode',
+        dose = '$dose',
+        code = '$code',
+        cost_price = '$cost_price',
+        selling_price = '$selling_price',
+        expiry = '$expiry',
+        company_name = '$company_name',
+        production_date = '$production_date',
+        expiration_date = '$expiration_date',
+        place = '$place',
+        quantity = '$quantity'
+        WHERE id = '$id'
+        ";
+            $res2 = mysqli_query($conn, $sql2);
+            if ($res2 == true) {
+                header("Location:index.php");
+            }
+            else{
+                header("Location:error.php");
+            }
+        }
+        ?>
         <div class="form-group row">
             <label for="empMobile" class="col-sm-2 col-form-label">name</label>
             <div class="col-sm-10">
@@ -80,7 +121,7 @@
 
             <label for="empMobile" class="col-sm-2 col-form-label">production_date</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" id="production_date" name="production_date" value="<?php echo $production_date; ?>"> 
+                <input type="date" class="form-control" id="production_date" name="production_date" value="<?php echo $production_date; ?>">
             </div>
 
             <label for="empMobile" class="col-sm-2 col-form-label">expiration_date</label>
@@ -103,43 +144,6 @@
         <br>
         <button type="submit" name="submit" class="btn btn-primary">UPDATE</button>
     </form>
-    <?php
-    if (isset($_POST['submit'])) {
-        $name = $_POST['name'];
-        $type = $_POST['type'];
-        $barcode = $_POST['barcode'];
-        $dose = $_POST['dose'];
-        $code = $_POST['code'];
-        $cost_price = $_POST['cost_price'];
-        $selling_price = $_POST['selling_price'];
-        $expiry = $_POST['expiry'];
-        $company_name = $_POST['company_name'];
-        $production_date = $_POST['production_date'];
-        $expiration_date = $_POST['expiration_date'];
-        $place = $_POST['place'];
-        $quantity = $_POST['quantity'];
 
-        $sql2 = "UPDATE tb_drugs SET 
-        name = '$name',
-        type = '$type',
-        barcode = '$barcode',
-        dose = '$dose',
-        code = '$code',
-        cost_price = '$cost_price',
-        selling_price = '$selling_price',
-        expiry = '$expiry',
-        company_name = '$company_name',
-        production_date = '$production_date',
-        expiration_date = '$expiration_date',
-        place = '$place',
-        quantity = '$quantity'
-        WHERE id = '$id'
-        ";
-        $res2 = mysqli_query($conn, $sql2);
-        if ($res2) {
-            header("Location:index.php");
-        } 
-    }
-    ?>
 </div>
 </div>

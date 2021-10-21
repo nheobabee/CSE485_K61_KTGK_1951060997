@@ -104,6 +104,9 @@
         if ($res) {
             header("Location:index.php");
         } 
+        else{
+            header("Location:error.php");
+        }
     }
     ?>
 </div>
