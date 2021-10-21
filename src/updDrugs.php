@@ -1,13 +1,33 @@
 <?php include('./config.php') ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<style>
+    .form-control {
+        width: 60%;
+        margin: 2px;
+        padding: 2px;
+    }
+    .btn-secondary, .btn-success {
+        padding: 0 1%;
+    }
+    .container{
+        margin-top:5px;
+    }
+    
+</style>
+<nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">UPDATE</a>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
 <div class="container">
-    <br>
-    <h1>UPDATE DRUGS</h1>
-    <br>
-    <a href="./index.php"><button type="button" class="btn btn-primary"><i class="fas fa-undo-alt"></i> BACK</button></a>
-    <br><br>
+<a href="./index.php"><button type="button" class="btn btn-secondary"><i class="fas fa-undo-alt"></i> BACK</button></a>
+
+
     <?php
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
@@ -141,8 +161,8 @@
 
 
         </div>
-        <br>
-        <button type="submit" name="submit" class="btn btn-primary">UPDATE</button>
+        
+        <button type="submit" name="submit" class="btn btn-success">UPDATE</button>
     </form>
 
 </div>
