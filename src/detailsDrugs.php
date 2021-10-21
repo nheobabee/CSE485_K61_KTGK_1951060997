@@ -6,7 +6,7 @@
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand">ADMIN - DRUGS</a>
+            <a class="navbar-brand">DETAILS</a>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -17,17 +17,47 @@
 
     <div class="container">
         <br>
-        <a href="./addDrugs.php"><button type="button" class="btn btn-primary"> ADD DRUGS</button></a>
+        <a href="./index.php"><button type="button" class="btn btn-primary"><i class="fas fa-undo-alt"></i> BACK</button></a>
         <br> <br> <br>
+        <?php
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $sql = "SELECT * FROM tb_drugs WHERE id = '$id'";
+            $res = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($res);
+            $name = $row['name'];
+            $type = $row['type'];
+            $barcode = $row['barcode'];
+            $dose = $row['dose'];
+            $code = $row['code'];
+            $cost_price = $row['cost_price'];
+            $selling_price = $row['selling_price'];
+            $expiry = $row['expiry'];
+            $company_name = $row['company_name'];
+            $production_date = $row['production_date'];
+            $expiration_date = $row['expiration_date'];
+            $place = $row['place'];
+            $quantity = $row['quantity'];
+        }
+        ?>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">drugs name</th>
-                    <th scope="col">drugs type</th>
-                    <th scope="col">UPDATE</th>
-                    <th scope="col">DELETE</th>
-                    <th scope="col">DETAILS</th>
+                    <th scope="col">type</th>
+                    <th scope="col">barcode</th>
+                    <th scope="col">dose</th>
+                    <th scope="col">code</th>
+                    <th scope="col">cost_price</th>
+                    <th scope="col">selling_price</th>
+                    <th scope="col">expiry</th>
+                    <th scope="col">company_name</th>
+                    <th scope="col">production_date</th>
+                    <th scope="col">expiration_date</th>
+                    <th scope="col">place</th>
+                    <th scope="col">quantity</th>
+
 
 
                 </tr>
@@ -61,15 +91,18 @@
                             <td><?php echo $id ?></td>
                             <td><?php echo $name ?></td>
                             <td><?php echo $type ?></td>
-                            <td>
-                                <a href="http://localhost/CSE485_K61_KTGK_1951060997/src/updDrugs.php?id=<?php echo $id; ?>"><button type="button" class="btn btn-success"><i class="fas fa-user-edit"></i>UPDATE</button></a>
-                            </td>
-                            <td>
-                                <a href="http://localhost/CSE485_K61_KTGK_1951060997/src/delDrugs.php?id=<?php echo $id; ?>"><button type="button" class="btn btn-danger"><i class="fas fa-user-minus"></i>DELETE</button></a>
-                            </td>
-                            <td>
-                                <a href="http://localhost/CSE485_K61_KTGK_1951060997/src/detailsDrugs.php?id=<?php echo $id; ?>"><button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i>DETAILS</button></a>
-                            </td>
+                            <td><?php echo $barcode ?></td>
+                            <td><?php echo $dose ?></td>
+                            <td><?php echo $code ?></td>
+                            <td><?php echo $cost_price ?></td>
+                            <td><?php echo $selling_price ?></td>
+                            <td><?php echo $expiry ?></td>
+                            <td><?php echo $company_name ?></td>
+                            <td><?php echo $production_date ?></td>
+                            <td><?php echo $expiration_date ?></td>
+                            <td><?php echo $place ?></td>
+                            <td><?php echo $quantity ?></td>
+
                         </tr>
                 <?php
 
