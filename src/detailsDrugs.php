@@ -71,7 +71,7 @@
             <tbody>
                 <?php
 
-                $sql = "SELECT * FROM tb_drugs";
+                $sql = "SELECT * FROM tb_drugs WHERE id = '$id'";
                 $res = mysqli_query($conn, $sql);
                 $count = mysqli_num_rows($res);
                 if ($count > 0) {

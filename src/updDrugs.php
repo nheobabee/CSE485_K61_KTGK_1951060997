@@ -7,25 +7,27 @@
         margin: 2px;
         padding: 2px;
     }
-    .btn-secondary, .btn-success {
+
+    .btn-secondary,
+    .btn-success {
         padding: 0 1%;
     }
-    .container{
-        margin-top:5px;
+
+    .container {
+        margin-top: 5px;
     }
-    
 </style>
 <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand">UPDATE</a>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
+    <div class="container-fluid">
+        <a class="navbar-brand">UPDATE</a>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 <div class="container">
-<a href="./index.php"><button type="button" class="btn btn-secondary"><i class="fas fa-undo-alt"></i> BACK</button></a>
+    <a href="./index.php"><button type="button" class="btn btn-secondary"><i class="fas fa-undo-alt"></i> BACK</button></a>
 
 
     <?php
@@ -86,8 +88,7 @@
             $res2 = mysqli_query($conn, $sql2);
             if ($res2 == true) {
                 header("Location:index.php");
-            }
-            else{
+            } else {
                 header("Location:error.php");
             }
         }
@@ -161,7 +162,7 @@
 
 
         </div>
-        
+
         <button type="submit" name="submit" class="btn btn-success">UPDATE</button>
     </form>
 
